@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Config Prometheus ###
+prometheus/prometheus.yml

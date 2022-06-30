@@ -1,6 +1,5 @@
 # APP METRICAS
-Projeto de estudos da integração do Spring Boot e o Prometheus
-
+s
 ## Requisitos
 
 * Docker
