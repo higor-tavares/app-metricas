@@ -1,5 +1,5 @@
 # APP METRICAS
-s
+Projeto de estudos da integração do Spring Boot e o Prometheus.
 ## Requisitos
 
 * Docker
@@ -7,9 +7,9 @@ s
 * Make (Opcional mas facilita)
 
 
-## Como executar?
+## Como executar?  
 
-Rode o comando `make dependencies`, onde será iniciado o container do Prometheus.
+Primeiramente renomeie o arquivo prometheus.sample.yml para prometheus.yml e em seguida substitua em target a string "SEU IP" pelo ip da sua maquina, Em seguida rode o comando `make dependencies`, onde será iniciado o container do Prometheus.
 Em seguida rode um projeto na sua IDE.
 
 ## Como testar?
