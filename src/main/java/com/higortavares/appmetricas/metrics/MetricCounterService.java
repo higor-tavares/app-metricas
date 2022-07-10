@@ -23,9 +23,7 @@ public class MetricCounterService {
         var g = m.gauge();
         meterRegistry.remove(g);
       }
-    } catch (Exception e){
-      //doNothing
-    }
+    } catch (Exception e){}
     Gauge gauge = Gauge.builder(name, value, AtomicReference::get).register(meterRegistry);
     System.out.println(gauge.value());
   }
