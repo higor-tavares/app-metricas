@@ -1,9 +1,7 @@
 package com.higortavares.appmetricas.controller;
 
-import com.higortavares.appmetricas.Value;
 import com.higortavares.appmetricas.metrics.MetricCounterService;
-import java.util.Arrays;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,7 +27,7 @@ public class HelloWorldController {
   @GetMapping("/usuariosLogados")
   public ResponseEntity<?> loggedUsers() {
     var value = Math.random()*100;
-    metricCounterService.percentage("usuarios_logados_sucess",value);
+    metricCounterService.percentage("usuarios_logados_sucess", new AtomicReference<Double>(value));
     return ResponseEntity.ok(value);
   }
 }

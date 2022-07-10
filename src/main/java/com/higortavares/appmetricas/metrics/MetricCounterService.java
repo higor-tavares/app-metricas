@@ -1,19 +1,8 @@
 package com.higortavares.appmetricas.metrics;
 
-import com.higortavares.appmetricas.Value;
-import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
-import io.micrometer.core.instrument.Tag;
-import java.security.Guard;
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,11 +16,18 @@ public class MetricCounterService {
     counter.increment(1.0);
   }
 
-  public void percentage(String name, Double value) {
-    final var atomicReference = new AtomicReference<Double>();
-    atomicReference.set(value);
-    Gauge.builder(name, atomicReference, AtomicReference::get).strongReference(true)
-        .register(meterRegistry);
+  public void percentage(String name, AtomicReference<Double> value) {
+    try {
+      var m = meterRegistry.get(name);
+      if (m != null) {
+        var g = m.gauge();
+        meterRegistry.remove(g);
+      }
+    } catch (Exception e){
+      //doNothing
+    }
+    Gauge gauge = Gauge.builder(name, value, AtomicReference::get).register(meterRegistry);
+    System.out.println(gauge.value());
   }
 
 }
