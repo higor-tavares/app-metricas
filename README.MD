@@ -29,5 +29,5 @@ um valor aleatorio para a metrica gausiana.
 
 Após criadas as métricas é possivel organizalas por meio de dashboard e paineis no grafana
 para isso acesse http://localhost:3000 e entre com usuario e senha padrões do grafana `usuario = admin` e `senha = admin`
-em seguida conecte o datasource Prometheus e em url coloque `"SEU_IP":9090` em seguida exporte o dashboard `assets/Micrometer_Prometheus_Dashboard.json` você deve visualizar um dashboard semelhante a imagem:  
+em seguida conecte o datasource Prometheus e em url coloque `"SEU_IP":9090` em seguida exporte o dashboard `assets/Micrometer Prometheus.json` você deve visualizar um dashboard semelhante a imagem:  
 ![Dashboard Grafana](assets/dashboard.png "Dashboard grafana")
